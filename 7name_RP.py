@@ -14,14 +14,11 @@ class NameResolver:
             self.cache[hostname]= ip_address
             return ip_address
         else:
-            return None  
-if __name__ == "__main__":
-    resolver = NameResolver()
-    hostnames=["example.com", "openai.com", "google.com", "not_exist.com"]
-    
-    for hostname in hostnames:
-        ip= resolver.resolve(hostname)
-        if ip:
-            print(f"{hostname} ->resolves to--> {ip}")
-        else:
-            print(f"{hostname} does not exist")
+            return False  
+resolver=NameResolver()
+userinput=input("Enter the domain name:")
+output=resolver.resolve(userinput)
+if output:
+    print("Mapped Ip for your domain",output)
+else:
+    print("No such domain mapping found")
